@@ -3,7 +3,20 @@ import { Link } from "@/i18n/routing"
 import { Button } from "@/components/ui/button"
 import { ProductCard } from "@/components/product/ProductCard"
 import { ShoppingBag, Monitor, ShoppingCart, Truck, Smartphone, Store, Gift, BookOpen, Coffee } from "lucide-react"
-import { db } from "@/lib/db"
+import { readFileSync } from "fs"
+import { join } from "path"
+
+interface ProductData {
+  id: string
+  title: string
+  titleEn: string | null
+  price: number
+  imageUrl: string
+  platform: string
+  category: string | null
+  rating: number | null
+  salesCount: number | null
+}
 
 const PLATFORMS = [
   { key: "taobao", name: "Taobao / Tmall", param: "TAOBAO", color: "from-orange-400 to-orange-600", icon: ShoppingBag },
@@ -17,29 +30,21 @@ const PLATFORMS = [
   { key: "meituan", name: "Meituan", param: "MEITUAN", color: "from-yellow-400 to-yellow-600", icon: Coffee },
 ]
 
+function getTopProducts(): ProductData[] {
+  try {
+    const data = readFileSync(join(process.cwd(), "public/data/products.json"), "utf-8")
+    const all = JSON.parse(data) as ProductData[]
+    return all.sort((a, b) => (b.salesCount || 0) - (a.salesCount || 0)).slice(0, 12)
+  } catch {
+    return []
+  }
+}
+
 export default async function HomePage({ params }: { params: { locale: string } }) {
   const t = await getTranslations("home")
   const locale = params.locale
-  const needTranslate = locale !== "en" && locale !== "zh"
 
-  const hotProducts = await db.product.findMany({
-    orderBy: { salesCount: "desc" },
-    take: 12,
-    select: {
-      id: true, platform: true, title: true, titleEn: true,
-      price: true, imageUrl: true, category: true, rating: true, salesCount: true,
-    },
-  })
-
-  const productIds = hotProducts.map((p) => p.id)
-  const translations = new Map<string, string>()
-  if (needTranslate) {
-    const cached = await db.productTranslation.findMany({
-      where: { productId: { in: productIds }, language: locale },
-      select: { productId: true, title: true },
-    })
-    for (const c of cached) translations.set(c.productId, c.title)
-  }
+  const hotProducts = getTopProducts()
 
   return (
     <div className="min-h-screen">
@@ -93,7 +98,6 @@ export default async function HomePage({ params }: { params: { locale: string } 
                 id={product.id}
                 title={product.title}
                 titleEn={product.titleEn}
-                translatedTitle={translations.get(product.id)}
                 price={product.price}
                 imageUrl={product.imageUrl}
                 platform={product.platform}

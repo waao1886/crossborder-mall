@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback, Suspense } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { Input } from "@/components/ui/input"
@@ -16,7 +16,7 @@ import {
 import { ProductCard } from "@/components/product/ProductCard"
 import { Search, X, Loader2, SlidersHorizontal } from "lucide-react"
 
-const PLATFORMS = ["", "JD", "TAOBAO", "PINDUODUO"]
+const PLATFORMS = ["", "JD", "TAOBAO", "PINDUODUO", "ALIBABA", "DOUYIN", "SUNING", "VIPSHOP", "DANGDANG", "MEITUAN"]
 const SORT_OPTIONS = [
   { value: "sales", label: "sortSales" },
   { value: "price_asc", label: "sortPriceLow" },
@@ -48,38 +48,75 @@ function SearchContent() {
   const [page, setPage] = useState(1)
   const [showFilters, setShowFilters] = useState(false)
 
+  const [allProducts, setAllProducts] = useState<Product[]>([])
   const [products, setProducts] = useState<Product[]>([])
   const [categories, setCategories] = useState<string[]>([])
   const [total, setTotal] = useState(0)
   const [totalPages, setTotalPages] = useState(1)
   const [loading, setLoading] = useState(true)
 
-  const fetchProducts = useCallback(async () => {
-    setLoading(true)
-    try {
-      const params = new URLSearchParams()
-      if (query) params.set("q", query)
-      if (platform) params.set("platform", platform)
-      if (category) params.set("category", category)
-      params.set("sort", sort)
-      params.set("page", String(page))
-      params.set("limit", "12")
+  const limit = 12
 
-      const res = await fetch(`/api/products?${params.toString()}`)
-      const data = await res.json()
-      setProducts(data.products)
-      setTotal(data.total)
-      setTotalPages(data.totalPages)
-      setCategories(data.categories || [])
-    } catch (err) {
-      console.error("Failed to fetch products:", err)
-    }
-    setLoading(false)
-  }, [query, platform, category, sort, page])
-
+  // Load all products once from static JSON
   useEffect(() => {
-    fetchProducts()
-  }, [fetchProducts])
+    fetch("/data/products.json")
+      .then((res) => res.json())
+      .then((data: Product[]) => {
+        setAllProducts(data)
+        // extract unique categories
+        const cats = Array.from(new Set(data.map((p) => p.category).filter(Boolean))) as string[]
+        setCategories(cats.sort())
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  }, [])
+
+  // Client-side filter/sort/paginate
+  useEffect(() => {
+    if (allProducts.length === 0) return
+
+    let filtered = [...allProducts]
+
+    if (query) {
+      const q = query.toLowerCase()
+      filtered = filtered.filter(
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          (p.titleEn && p.titleEn.toLowerCase().includes(q))
+      )
+    }
+
+    if (platform) {
+      filtered = filtered.filter((p) => p.platform === platform)
+    }
+
+    if (category) {
+      filtered = filtered.filter((p) => p.category === category)
+    }
+
+    // Sort
+    switch (sort) {
+      case "price_asc":
+        filtered.sort((a, b) => a.price - b.price)
+        break
+      case "price_desc":
+        filtered.sort((a, b) => b.price - a.price)
+        break
+      case "rating":
+        filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0))
+        break
+      case "sales":
+      default:
+        filtered.sort((a, b) => (b.salesCount || 0) - (a.salesCount || 0))
+        break
+    }
+
+    setTotal(filtered.length)
+    setTotalPages(Math.max(1, Math.ceil(filtered.length / limit)))
+
+    const start = (page - 1) * limit
+    setProducts(filtered.slice(start, start + limit))
+  }, [allProducts, query, platform, category, sort, page])
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
