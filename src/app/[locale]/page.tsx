@@ -1,8 +1,9 @@
 import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/routing"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { ProductCard } from "@/components/product/ProductCard"
-import { ShoppingBag, Monitor, ShoppingCart, Truck, Smartphone, Store, Gift, BookOpen, Coffee } from "lucide-react"
+import { ShoppingBag, Monitor, ShoppingCart, Truck, Smartphone, Store, Gift, BookOpen, Coffee, Search } from "lucide-react"
 import { readFileSync } from "fs"
 import { join } from "path"
 
@@ -46,11 +47,27 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
   const hotProducts = getTopProducts()
 
+  let localeParam = params.locale || "en"
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
       <section className="pt-20 pb-10 text-center">
         <div className="container mx-auto px-4 max-w-2xl">
+          {/* Search Bar above title */}
+          <form action={`/${localeParam}/search`} className="mb-8">
+            <div className="relative max-w-xl mx-auto">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Input
+                name="q"
+                placeholder={t("hero.searchPlaceholder")}
+                className="pl-12 pr-4 h-14 text-lg rounded-2xl shadow-sm border-2 border-primary/20 focus:border-primary"
+              />
+              <Button type="submit" size="lg" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-xl">
+                {t("hero.searchBtn")}
+              </Button>
+            </div>
+          </form>
           <h1 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight">
             {t("hero.title")}
           </h1>

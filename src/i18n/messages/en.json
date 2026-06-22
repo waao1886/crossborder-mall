@@ -6,7 +6,11 @@
   },
   "nav": {
     "home": "Home",
+    "comparePrices": "Compare Prices",
     "services": "Services",
+    "logistics": "Logistics",
+    "agent": "Shopping Agent",
+    "travel": "Travel",
     "china": "China Portal",
     "search": "Search",
     "compare": "Compare Prices",
@@ -22,7 +26,9 @@
     "hero": {
       "title": "China E-Commerce in Your Language",
       "subtitle": "Browse top Chinese shopping platforms. We translate product info into 8 languages so you can shop across borders without the language barrier.",
-      "cta": "Start Browsing"
+      "cta": "Start Browsing",
+      "searchPlaceholder": "Search products from Chinese platforms...",
+      "searchBtn": "Search"
     },
     "platforms": "Choose a Platform",
     "platformDesc": {
