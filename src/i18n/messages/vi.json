@@ -1,0 +1,19 @@
+{
+  "site": {
+    "name": "CrossBorder Mall",
+    "tagline": "Hàng Trung Quốc, Ngôn Ngữ Của Bạn",
+    "description": "Duyệt sản phẩm từ JD.com, Taobao và Pinduoduo bằng ngôn ngữ của bạn"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "search": "Tìm kiếm",
+    "compare": "So sánh giá",
+    "membership": "Thành viên",
+    "orders": "Đơn hàng",
+    "referral": "Giới thiệu",
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "dashboard": "Bảng điều khiển",
+    "logout": "Đăng xuất"
+  }
+}

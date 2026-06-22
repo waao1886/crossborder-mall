@@ -1,0 +1,19 @@
+{
+  "site": {
+    "name": "CrossBorder Mall",
+    "tagline": "منتجات صينية، بلغتك",
+    "description": "تصفح منتجات JD.com و Taobao و Pinduoduo بلغتك"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "search": "بحث",
+    "compare": "مقارنة الأسعار",
+    "membership": "العضوية",
+    "orders": "طلباتي",
+    "referral": "الإحالة",
+    "login": "تسجيل الدخول",
+    "register": "التسجيل",
+    "dashboard": "لوحة التحكم",
+    "logout": "تسجيل الخروج"
+  }
+}

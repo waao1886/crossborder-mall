@@ -1,0 +1,19 @@
+{
+  "site": {
+    "name": "CrossBorder Mall",
+    "tagline": "ផលិតផលចិន ជាភាសារបស់អ្នក",
+    "description": "រកមើលផលិតផលពី JD.com, Taobao និង Pinduoduo ជាភាសារបស់អ្នក"
+  },
+  "nav": {
+    "home": "ទំព័រដើម",
+    "search": "ស្វែងរក",
+    "compare": "ប្រៀបធៀបតម្លៃ",
+    "membership": "សមាជិកភាព",
+    "orders": "ការបញ្ជាទិញ",
+    "referral": "ការណែនាំ",
+    "login": "ចូល",
+    "register": "ចុះឈ្មោះ",
+    "dashboard": "ផ្ទាំងគ្រប់គ្រង",
+    "logout": "ចាកចេញ"
+  }
+}

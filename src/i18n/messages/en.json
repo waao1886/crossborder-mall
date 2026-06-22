@@ -1,0 +1,241 @@
+{
+  "site": {
+    "name": "CrossBorder Mall",
+    "tagline": "Chinese Products, Your Language",
+    "description": "Browse products from JD.com, Taobao, and Pinduoduo in your language"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "china": "China Portal",
+    "search": "Search",
+    "compare": "Compare Prices",
+    "membership": "Membership",
+    "orders": "My Orders",
+    "referral": "Referral",
+    "login": "Login",
+    "register": "Register",
+    "dashboard": "Dashboard",
+    "logout": "Logout"
+  },
+  "home": {
+    "hero": {
+      "title": "China E-Commerce in Your Language",
+      "subtitle": "Browse top Chinese shopping platforms. We translate product info into 8 languages so you can shop across borders without the language barrier.",
+      "cta": "Start Browsing"
+    },
+    "platforms": "Choose a Platform",
+    "platformDesc": {
+      "taobao": "Fashion, beauty, home & lifestyle",
+      "jd": "Electronics, appliances & premium brands",
+      "pinduoduo": "Daily essentials, groceries & great deals",
+      "alibaba": "Wholesale sourcing & factory direct",
+      "douyin": "Trending products from short videos"
+    },
+    "hotDeals": "Trending Now",
+    "viewAll": "View All",
+    "howItWorks": "How It Works",
+    "step1": "Choose a platform",
+    "step2": "Browse products in your language",
+    "step3": "Click to buy on the original platform"
+  },
+  "search": {
+    "placeholder": "Search products in Chinese...",
+    "filter": "Filters",
+    "platform": "Platform",
+    "priceRange": "Price Range",
+    "sortBy": "Sort By",
+    "sortPriceLow": "Price: Low to High",
+    "sortPriceHigh": "Price: High to Low",
+    "sortRating": "Rating",
+    "sortSales": "Sales",
+    "allPlatforms": "All Platforms",
+    "category": "Category",
+    "results": "results",
+    "noResults": "No products found",
+    "previous": "Previous",
+    "next": "Next",
+    "clearFilters": "Clear all filters"
+  },
+  "product": {
+    "price": "Price",
+    "approx": "approx.",
+    "originalPrice": "Original Price (CNY)",
+    "viewOnPlatform": "View on {platform}",
+    "rating": "Rating",
+    "sales": "Sales",
+    "category": "Category",
+    "description": "Description",
+    "specifications": "Specifications",
+    "comparePrice": "Compare Prices Across Platforms",
+    "buyNow": "Buy Now",
+    "proxyBuy": "Proxy Purchase",
+    "share": "Share",
+    "copyLink": "Copy Link",
+    "linkCopied": "Link copied!",
+    "translating": "Translating...",
+    "upgradeToView": "Upgrade to view in your language",
+    "upgradeNow": "Upgrade Now"
+  },
+  "membership": {
+    "title": "Choose Your Plan",
+    "currentPlan": "Current Plan",
+    "expiresIn": "Expires in {days} days",
+    "expired": "Expired",
+    "upgrade": "Upgrade",
+    "downgrade": "Downgrade",
+    "free": {
+      "name": "Free",
+      "price": "Free",
+      "feature1": "Browse all products",
+      "feature2": "View original Chinese",
+      "feature3": "Basic search"
+    },
+    "basic": {
+      "name": "Basic",
+      "price": "15 USDC / year",
+      "feature1": "Full translation (8 languages)",
+      "feature2": "Cross-platform price comparison",
+      "feature3": "Remove ads",
+      "feature4": "Advanced search & filters"
+    },
+    "premium": {
+      "name": "Premium",
+      "price": "15 USDC / year",
+      "feature1": "Everything in Basic",
+      "feature2": "Proxy purchase service",
+      "feature3": "Priority customer support",
+      "feature4": "Order tracking"
+    },
+    "payment": {
+      "title": "How to Pay",
+      "step1": "Send exactly 15 USDC to the wallet address below",
+      "step2": "Copy the transaction hash (TxHash) from your wallet",
+      "step3": "Submit the TxHash below for verification",
+      "walletAddress": "USDC Wallet Address (Polygon)",
+      "txHashLabel": "Transaction Hash",
+      "txHashPlaceholder": "0x...",
+      "submit": "Submit for Verification",
+      "pending": "Payment verification in progress...",
+      "confirmed": "Payment confirmed! Your membership is now active.",
+      "failed": "Payment verification failed. Please check your TxHash."
+    }
+  },
+  "referral": {
+    "title": "Referral Center",
+    "yourCode": "Your Referral Code",
+    "yourLink": "Your Referral Link",
+    "copyCode": "Copy Code",
+    "copied": "Copied!",
+    "shareCode": "Share your code and earn 10% commission",
+    "stats": "Your Stats",
+    "totalReferrals": "Total Referrals",
+    "paidReferrals": "Paid Referrals",
+    "totalCommission": "Total Commission",
+    "availableBalance": "Available Balance",
+    "commissionHistory": "Commission History",
+    "referredUser": "Referred User",
+    "amount": "Amount",
+    "date": "Date",
+    "status": "Status",
+    "pending": "Pending",
+    "earned": "Earned",
+    "paid": "Paid",
+    "noCommissions": "No commissions yet. Start sharing your referral link!"
+  },
+  "order": {
+    "title": "My Orders",
+    "newOrder": "New Order",
+    "orderId": "Order ID",
+    "product": "Product",
+    "quantity": "Quantity",
+    "total": "Total",
+    "status": "Status",
+    "date": "Date",
+    "tracking": "Tracking",
+    "shippingAddress": "Shipping Address",
+    "addressPlaceholder": "Enter your full shipping address",
+    "submit": "Place Order",
+    "statusPending": "Pending",
+    "statusPurchasing": "Purchasing",
+    "statusShipped": "Shipped",
+    "statusDelivered": "Delivered",
+    "statusCancelled": "Cancelled",
+    "noOrders": "No orders yet"
+  },
+  "compare": {
+    "title": "Cross-Platform Price Comparison",
+    "searchPlaceholder": "Enter a product keyword...",
+    "compare": "Compare",
+    "platform": "Platform",
+    "lowestPrice": "Lowest Price",
+    "results": "Comparison Results"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "loginButton": "Sign In",
+    "registerButton": "Create Account",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "registerNow": "Register now",
+    "loginNow": "Login now",
+    "orContinueWith": "Or continue with",
+    "googleLogin": "Continue with Google"
+  },
+  "footer": {
+    "about": "About",
+    "aboutText": "CrossBorder Mall helps global shoppers access Chinese e-commerce platforms with real-time translation.",
+    "help": "Help",
+    "faq": "FAQ",
+    "contact": "Contact Us",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2026 CrossBorder Mall. All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "noData": "No data available",
+    "inDevelopment": "This feature is coming soon!"
+  },
+  "services": {
+    "title": "China Service Directory",
+    "subtitle": "Logistics, purchasing agents, and travel services — everything you need for cross-border shopping.",
+    "logistics": {
+      "title": "Cross-Border Logistics"
+    },
+    "agent": {
+      "title": "Purchasing & Support"
+    },
+    "travel": {
+      "title": "Travel & Tours"
+    }
+  },
+  "china": {
+    "portal": {
+      "title": "China Internet Portal",
+      "subtitle": "A curated gateway to China's top websites — shopping, news, travel, business, and more.",
+      "shopping": "Shopping",
+      "news": "News & Media",
+      "travel": "Travel",
+      "search": "Search Engines",
+      "social": "Social & Community",
+      "biz": "Business & Trade",
+      "video": "Video & Streaming",
+      "tech": "Tech & Startups"
+    }
+  }
+}

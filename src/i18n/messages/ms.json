@@ -1,0 +1,19 @@
+{
+  "site": {
+    "name": "CrossBorder Mall",
+    "tagline": "Produk China, Bahasa Anda",
+    "description": "Layari produk dari JD.com, Taobao dan Pinduoduo dalam bahasa anda"
+  },
+  "nav": {
+    "home": "Laman Utama",
+    "search": "Cari",
+    "compare": "Banding Harga",
+    "membership": "Keahlian",
+    "orders": "Pesanan",
+    "referral": "Rujukan",
+    "login": "Log Masuk",
+    "register": "Daftar",
+    "dashboard": "Papan Pemuka",
+    "logout": "Log Keluar"
+  }
+}
