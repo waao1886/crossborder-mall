@@ -47,7 +47,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
   const hotProducts = getTopProducts()
 
-  let localeParam = params.locale || "en"
+  const localeParam = params.locale || "en"
 
   return (
     <div className="min-h-screen">

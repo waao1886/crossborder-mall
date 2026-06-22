@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/routing"
-import { useRouter } from "@/i18n/routing"
 import { Button } from "@/components/ui/button"
 import LanguageSwitcher from "./LanguageSwitcher"
 import { ShoppingCart, User, Menu, X, ChevronDown } from "lucide-react"
@@ -10,7 +9,6 @@ import { useState, useRef, useEffect } from "react"
 
 export default function Header() {
   const t = useTranslations("nav")
-  const tHome = useTranslations("home")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [serversOpen, setServersOpen] = useState(false)
   const serversRef = useRef<HTMLDivElement>(null)
