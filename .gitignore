@@ -36,7 +36,8 @@ prisma/dev.db
 prisma/dev.db-journal
 
 # vercel
-.vercel
+.vercel/*
+!.vercel/project.json
 
 # typescript
 *.tsbuildinfo
