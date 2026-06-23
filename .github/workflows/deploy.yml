@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - dev
 
 jobs:
   deploy:
@@ -19,5 +20,13 @@ jobs:
       - name: Install Vercel CLI
         run: npm i -g vercel@latest
 
-      - name: Deploy to Vercel
+      - name: Deploy to Vercel (Preview)
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          vercel --token=${{ secrets.VERCEL_TOKEN }} --yes > deployment-url.txt
+          echo "PREVIEW_URL=$(cat deployment-url.txt)" >> $GITHUB_OUTPUT
+        id: preview
+
+      - name: Deploy to Vercel (Production)
+        if: github.ref == 'refs/heads/main'
         run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
