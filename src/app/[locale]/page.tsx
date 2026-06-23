@@ -3,7 +3,9 @@ import { Link } from "@/i18n/routing"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ShoppingBag, Monitor, ShoppingCart, Truck, Smartphone, Store, Gift, BookOpen, Coffee, Search } from "lucide-react"
-import { ProductWall } from "@/components/product/ProductWall"
+import { ProductWall, type ProductData } from "@/components/product/ProductWall"
+import fs from "fs"
+import path from "path"
 
 const PLATFORMS = [
   { key: "taobao", name: "Taobao / Tmall", param: "TAOBAO", color: "from-orange-400 to-orange-600", icon: ShoppingBag },
@@ -22,6 +24,13 @@ export default async function HomePage({ params }: { params: { locale: string } 
   const locale = params.locale
 
   const localeParam = params.locale || "en"
+
+  // Load product data at build time
+  const productsPath = path.join(process.cwd(), "public", "data", "products.json")
+  const allProducts: ProductData[] = fs.existsSync(productsPath)
+    ? JSON.parse(fs.readFileSync(productsPath, "utf-8"))
+    : []
+  const products = [...allProducts].sort((a, b) => (b.salesCount || 0) - (a.salesCount || 0))
 
   return (
     <div className="min-h-screen">
@@ -77,7 +86,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
       <section className="pb-20">
         <div className="container mx-auto px-4">
           <h2 className="text-lg font-semibold mb-6">{t("hotDeals")}</h2>
-          <ProductWall locale={locale} />
+          <ProductWall locale={locale} products={products} />
         </div>
       </section>
     </div>

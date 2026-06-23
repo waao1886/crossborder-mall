@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 import { ProductCard } from "@/components/product/ProductCard"
 
-interface ProductData {
+export interface ProductData {
   id: string
   title: string
   titleEn: string | null
@@ -15,22 +15,14 @@ interface ProductData {
   salesCount: number | null
 }
 
-export function ProductWall({ locale }: { locale: string }) {
-  const [products, setProducts] = useState<ProductData[]>([])
+export function ProductWall({ locale, products }: { locale: string; products: ProductData[] }) {
   const [displayCount, setDisplayCount] = useState(12)
   const [hasMore, setHasMore] = useState(true)
   const sentinelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    fetch("/data/products.json")
-      .then((res) => res.json())
-      .then((data: ProductData[]) => {
-        const sorted = data.sort((a, b) => (b.salesCount || 0) - (a.salesCount || 0))
-        setProducts(sorted)
-        setHasMore(sorted.length > 12)
-      })
-      .catch(() => setProducts([]))
-  }, [])
+    setHasMore(products.length > 12)
+  }, [products.length])
 
   const loadMore = useCallback(() => {
     setDisplayCount((prev) => {
