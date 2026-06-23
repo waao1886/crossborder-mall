@@ -2,22 +2,8 @@ import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/routing"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ProductCard } from "@/components/product/ProductCard"
 import { ShoppingBag, Monitor, ShoppingCart, Truck, Smartphone, Store, Gift, BookOpen, Coffee, Search } from "lucide-react"
-import { readFileSync } from "fs"
-import { join } from "path"
-
-interface ProductData {
-  id: string
-  title: string
-  titleEn: string | null
-  price: number
-  imageUrl: string
-  platform: string
-  category: string | null
-  rating: number | null
-  salesCount: number | null
-}
+import { ProductWall } from "@/components/product/ProductWall"
 
 const PLATFORMS = [
   { key: "taobao", name: "Taobao / Tmall", param: "TAOBAO", color: "from-orange-400 to-orange-600", icon: ShoppingBag },
@@ -31,21 +17,9 @@ const PLATFORMS = [
   { key: "meituan", name: "Meituan", param: "MEITUAN", color: "from-yellow-400 to-yellow-600", icon: Coffee },
 ]
 
-function getTopProducts(): ProductData[] {
-  try {
-    const data = readFileSync(join(process.cwd(), "public/data/products.json"), "utf-8")
-    const all = JSON.parse(data) as ProductData[]
-    return all.sort((a, b) => (b.salesCount || 0) - (a.salesCount || 0)).slice(0, 12)
-  } catch {
-    return []
-  }
-}
-
 export default async function HomePage({ params }: { params: { locale: string } }) {
   const t = await getTranslations("home")
   const locale = params.locale
-
-  const hotProducts = getTopProducts()
 
   const localeParam = params.locale || "en"
 
@@ -99,32 +73,11 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </div>
       </section>
 
-      {/* Hot Deals — Photo Wall */}
+      {/* Trending — Infinite Photo Wall */}
       <section className="pb-20">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-lg font-semibold">{t("hotDeals")}</h2>
-            <Link href="/search">
-              <Button variant="outline" size="sm">{t("viewAll")} →</Button>
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {hotProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                title={product.title}
-                titleEn={product.titleEn}
-                price={product.price}
-                imageUrl={product.imageUrl}
-                platform={product.platform}
-                category={product.category}
-                rating={product.rating}
-                salesCount={product.salesCount}
-                locale={locale}
-              />
-            ))}
-          </div>
+          <h2 className="text-lg font-semibold mb-6">{t("hotDeals")}</h2>
+          <ProductWall locale={locale} />
         </div>
       </section>
     </div>
