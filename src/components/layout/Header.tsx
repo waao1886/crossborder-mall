@@ -33,12 +33,12 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link href="/" className="text-base font-semibold hover:text-primary transition-colors">{t("home")}</Link>
-          <Link href="/search" className="text-base font-semibold hover:text-primary transition-colors">{t("comparePrices")}</Link>
+          <Link href="/" className="text-base font-medium hover:text-primary transition-colors">{t("home")}</Link>
+          <Link href="/search" className="text-base font-medium hover:text-primary transition-colors">{t("comparePrices")}</Link>
           <div ref={serversRef} className="relative">
             <button
               onClick={() => setServersOpen(!serversOpen)}
-              className="text-base font-semibold hover:text-primary transition-colors flex items-center gap-1"
+              className="text-base font-medium hover:text-primary transition-colors flex items-center gap-1"
             >
               {t("services")}
               <ChevronDown className={`h-4 w-4 transition-transform ${serversOpen ? "rotate-180" : ""}`} />
@@ -65,7 +65,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <LanguageSwitcher />
           <Link href="/login">
-            <Button variant="ghost" size="sm" className="hidden md:flex gap-2">
+            <Button variant="ghost" size="sm" className="hidden md:flex gap-2 font-semibold">
               <User className="h-4 w-4" />
               {t("login")}
             </Button>
