@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname } from "@/i18n/routing"
-import { Globe } from "lucide-react"
+import { Globe, ChevronDown } from "lucide-react"
 
 const languages = [
   { code: "en", label: "English", flag: "🇬🇧" },
@@ -32,13 +32,16 @@ export default function LanguageSwitcher() {
   const currentLang = languages.find((l) => l.code === currentLocale)
 
   return (
-    <div className="relative group">
-      <button className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded-md hover:bg-accent">
+    <div className="relative group/lang">
+      <button className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors px-3 py-2 rounded-md hover:bg-accent cursor-pointer">
         <Globe className="h-4 w-4" />
         <span>{currentLang?.flag}</span>
         <span className="hidden sm:inline">{currentLang?.label}</span>
+        <ChevronDown className="h-3 w-3" />
       </button>
-      <div className="absolute right-0 top-full mt-1 bg-popover border rounded-md shadow-lg p-1 hidden group-hover:block z-50 min-w-[180px]">
+      {/* invisible bridge to prevent flicker when moving mouse to dropdown */}
+      <div className="absolute left-0 right-0 top-full h-2" />
+      <div className="absolute right-0 top-full mt-0 bg-popover border rounded-md shadow-lg p-1 hidden group-hover/lang:block z-50 min-w-[180px]">
         {languages.map((lang) => (
           <button
             key={lang.code}
