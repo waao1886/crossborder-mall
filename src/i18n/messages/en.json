@@ -25,7 +25,7 @@
   "home": {
     "hero": {
       "title": "China E-Commerce in Your Language",
-      "subtitle": "Browse top Chinese shopping platforms. We translate product info into 8 languages so you can shop across borders without the language barrier.",
+      "subtitle": "Browse top Chinese shopping platforms. We translate product info into multiple languages so you can shop across borders without the language barrier.",
       "cta": "Start Browsing",
       "searchPlaceholder": "Search products from Chinese platforms...",
       "searchBtn": "Search"
@@ -100,7 +100,7 @@
     "basic": {
       "name": "Basic",
       "price": "15 USDC / year",
-      "feature1": "Full translation (8 languages)",
+      "feature1": "Full translation (multiple languages)",
       "feature2": "Cross-platform price comparison",
       "feature3": "Remove ads",
       "feature4": "Advanced search & filters"
